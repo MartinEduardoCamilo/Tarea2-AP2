@@ -1,6 +1,5 @@
 ﻿@page "/Persona"
 @page "/Persona/{PersonaId:int}"
-
 @using RegistroPersona.BLL
 @using RegistroPersona.Models
 
@@ -27,7 +26,7 @@
                                     <InputNumber @bind-Value="persona.PersonaId" class="form-control col-4" />
                                     <ValidationMessage For="(() => persona.PersonaId)"></ValidationMessage>
                                     <div class="input-group-append">
-                                        <button type="button" class="btn btn-primary input-group-text" @onclick="Buscar">Buscar</button>
+                                        <button type="button" class="btn btn-primary" @onclick="Buscar"> <span class="oi oi-hard-drive"></span>Buscar </button>
                                     </div>
                                 </div>
                             </div>

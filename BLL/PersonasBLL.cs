@@ -24,12 +24,12 @@ namespace RegistroPersona.BLL
         private static bool Insertar(Persona persona)
         {
             bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
 
             try
             {
-                db.Personas.Add(persona);
-                paso = db.SaveChanges() > 0;
+                contexto.Personas.Add(persona);
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -37,7 +37,7 @@ namespace RegistroPersona.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return paso;
         }
@@ -45,12 +45,12 @@ namespace RegistroPersona.BLL
         public static bool Modificar(Persona persona)
         {
             bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
 
             try
             {
-                db.Entry(persona).State = EntityState.Modified;
-                paso = db.SaveChanges() > 0;
+                contexto.Entry(persona).State = EntityState.Modified;
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -58,7 +58,7 @@ namespace RegistroPersona.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
 
             return paso;
@@ -67,15 +67,15 @@ namespace RegistroPersona.BLL
         public static bool Eliminar(int id)
         {
             bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
 
             try
             {
-                var aux = db.Personas.Find(id);
+                var aux = contexto.Personas.Find(id);
                 if (aux != null)
                 {
-                    db.Personas.Remove(aux);//remueve la informacion de la entidad relacionada
-                    paso = db.SaveChanges() > 0;
+                    contexto.Personas.Remove(aux);//remueve la informacion de la entidad relacionada
+                    paso = contexto.SaveChanges() > 0;
                 }
             }
             catch (Exception)
@@ -84,7 +84,7 @@ namespace RegistroPersona.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
 
             return paso;
@@ -92,12 +92,12 @@ namespace RegistroPersona.BLL
 
         public static Persona Buscar(int id)
         {
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
             Persona persona;
 
             try
             {
-                persona = db.Personas.Find(id);
+                persona = contexto.Personas.Find(id);
             }
             catch (Exception)
             {
@@ -105,18 +105,18 @@ namespace RegistroPersona.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return persona;
         }
 
         public static bool Existe(int id)
         {
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
             bool encontrado = false;
             try
             {
-                encontrado = db.Personas.Any(p => p.PersonaId == id);
+                encontrado = contexto.Personas.Any(p => p.PersonaId == id);
             }
             catch (Exception)
             {
@@ -124,7 +124,7 @@ namespace RegistroPersona.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return encontrado;
         }
