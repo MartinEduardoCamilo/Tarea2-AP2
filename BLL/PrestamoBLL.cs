@@ -1,35 +1,34 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using RegistroPersona.DAL;
 using RegistroPersona.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace RegistroPersona.BLL
 {
-    public class PersonasBLL
+    public class PrestamoBLL
     {
-
-        public static bool Guardar(Persona persona)
+        public static bool Guardar(Prestamo prestamo)
         {
-            if (!Existe(persona.PersonaId))// si no existe se inserta
-                return Insertar(persona);
+            if (!Existe(prestamo.PrestamoId))// si no existe se inserta
+                return Insertar(prestamo);
             else
-                return Modificar(persona);
+                return Modificar(prestamo);
         }
 
-        private static bool Insertar(Persona persona)
+        private static bool Insertar(Prestamo prestamo)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                contexto.Personas.Add(persona);
+                contexto.Prestamos.Add(prestamo);
+                //agrega el balance a la persona
+                contexto.Personas.Find(prestamo.PersonaId).Balance += prestamo.Balance;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -43,14 +42,26 @@ namespace RegistroPersona.BLL
             return paso;
         }
 
-        public static bool Modificar(Persona persona)
+        public static bool Modificar(Prestamo prestamo)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-
+            int PersonaAnterior = Buscar(prestamo.PrestamoId).PersonaId;
+            decimal BalanceAnterior = Buscar(prestamo.PrestamoId).Balance;
             try
             {
-                contexto.Entry(persona).State = EntityState.Modified;
+
+                if (PersonaAnterior != prestamo.PersonaId)
+                {
+                    contexto.Personas.Find(PersonaAnterior).Balance -= BalanceAnterior;
+                    contexto.Personas.Find(prestamo.PersonaId).Balance += prestamo.Balance;
+                }
+                else
+                {
+                    contexto.Personas.Find(prestamo.PersonaId).Balance -= BalanceAnterior;
+                    contexto.Personas.Find(prestamo.PersonaId).Balance += prestamo.Balance;
+                }
+                contexto.Entry(prestamo).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -72,10 +83,11 @@ namespace RegistroPersona.BLL
 
             try
             {
-                var aux = contexto.Personas.Find(id);
+                var aux = contexto.Prestamos.Find(id);
                 if (aux != null)
                 {
-                    contexto.Personas.Remove(aux);//remueve la informacion de la entidad relacionada
+                    contexto.Personas.Find(aux.PersonaId).Balance -= aux.Balance; // se resta el balance a la persona que corresponda
+                    contexto.Prestamos.Remove(aux);//remueve la informacion de la entidad relacionada
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -91,14 +103,14 @@ namespace RegistroPersona.BLL
             return paso;
         }
 
-        public static Persona Buscar(int id)
+        public static Prestamo Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Persona persona;
+            Prestamo prestamo;
 
             try
             {
-                persona = contexto.Personas.Find(id);
+                prestamo = contexto.Prestamos.Find(id);
             }
             catch (Exception)
             {
@@ -108,17 +120,17 @@ namespace RegistroPersona.BLL
             {
                 contexto.Dispose();
             }
-            return persona;
+            return prestamo;
         }
 
-        public static List<Persona> GetList(Expression<Func<Persona, bool>> persona)
+        public static List<Prestamo> GetList(Expression<Func<Prestamo, bool>> prestamo)
         {
-            List<Persona> lista = new List<Persona>();
+            List<Prestamo> lista = new List<Prestamo>();
             Contexto db = new Contexto();
 
             try
             {
-                lista = db.Personas.Where(persona).ToList();
+                lista = db.Prestamos.Where(prestamo).ToList();
             }
             catch (Exception)
             {
@@ -139,7 +151,7 @@ namespace RegistroPersona.BLL
             bool encontrado = false;
             try
             {
-                encontrado = contexto.Personas.Any(p => p.PersonaId == id);
+                encontrado = contexto.Prestamos.Any(p => p.PrestamoId == id);
             }
             catch (Exception)
             {

@@ -37,7 +37,7 @@ namespace RegistroPersona.Models
         [Required(ErrorMessage = "El campo fecha no puede estar vacío.")]
         [DisplayFormat(DataFormatString = "{0:dd,mm, yyyy}")]
         public DateTime Fecha { get; set; }
-
+        public decimal Balance { get; set; }
         public Persona()
         {
             PersonaId = 0;
@@ -46,6 +46,18 @@ namespace RegistroPersona.Models
             Cedula = string.Empty;
             Direccion = string.Empty;
             Fecha = DateTime.Now;
+            Balance = 0;
+        }
+
+        public Persona(int personaId, string nombre, string telefono, string cedula, string direccion, DateTime fecha, decimal balance)
+        {
+            PersonaId = personaId;
+            Nombre = nombre;
+            Telefono = telefono;
+            Cedula = cedula;
+            Direccion = direccion;
+            Fecha = fecha;
+            Balance = balance;
         }
     }
 }

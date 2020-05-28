@@ -26,7 +26,7 @@
                                     <InputNumber @bind-Value="persona.PersonaId" class="form-control col-4" />
                                     <ValidationMessage For="(() => persona.PersonaId)"></ValidationMessage>
                                     <div class="input-group-append">
-                                        <button type="button" class="btn btn-primary" @onclick="Buscar"> <span class="oi oi-hard-drive"></span>Buscar </button>
+                                        <button type="button" class="btn btn-primary" @onclick="Buscar"> <span class="fa fa-search"></span>Buscar </button>
                                     </div>
                                 </div>
                             </div>
@@ -61,6 +61,12 @@
                         <label>FECHA:</label>
                         <InputDate @bind-Value="persona.Fecha" class="form-control" />
                         <ValidationMessage For="@(() => persona.Fecha)" />
+                    </div>
+                    @*Balance*@
+                    <div class="form-group">
+                        <label>BALANCE:</label>
+                        <InputNumber @bind-Value="persona.Balance" readonly="true" class="form-control" />
+                        <ValidationMessage For="@(() => persona.Balance)" />
                     </div>
                 </form>
             </div>

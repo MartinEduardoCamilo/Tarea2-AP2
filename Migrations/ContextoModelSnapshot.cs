@@ -22,6 +22,9 @@ namespace RegistroPersona.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Cedula")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -47,6 +50,34 @@ namespace RegistroPersona.Migrations
                     b.HasKey("PersonaId");
 
                     b.ToTable("Personas");
+                });
+
+            modelBuilder.Entity("RegistroPersona.Models.Prestamo", b =>
+                {
+                    b.Property<int>("PrestamoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Concepto")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(40);
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PrestamoId");
+
+                    b.ToTable("Prestamos");
                 });
 #pragma warning restore 612, 618
         }

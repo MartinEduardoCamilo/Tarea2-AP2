@@ -11,6 +11,7 @@ namespace RegistroPersona.DAL
     public class Contexto : DbContext
     {
         public DbSet<Persona> Personas { get; set; }
+        public DbSet<Prestamo> Prestamos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source=DATA\RPersonas.db");
