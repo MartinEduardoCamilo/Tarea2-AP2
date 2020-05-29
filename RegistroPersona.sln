@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistroPersona", "RegistroPersona.csproj", "{4230D6F6-DC8C-408F-9386-B438563465CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroPersonaTests", "..\RegistroPersonaTests\RegistroPersonaTests.csproj", "{595F9638-7D1B-42ED-9DFE-D26054434C5E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{4230D6F6-DC8C-408F-9386-B438563465CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4230D6F6-DC8C-408F-9386-B438563465CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4230D6F6-DC8C-408F-9386-B438563465CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{595F9638-7D1B-42ED-9DFE-D26054434C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{595F9638-7D1B-42ED-9DFE-D26054434C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{595F9638-7D1B-42ED-9DFE-D26054434C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{595F9638-7D1B-42ED-9DFE-D26054434C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
