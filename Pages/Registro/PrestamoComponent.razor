@@ -27,7 +27,7 @@
                                 <InputNumber @bind-Value="prestamo.PrestamoId" class="form-control col-4" />
                                 <ValidationMessage For="(() => prestamo.PrestamoId)"></ValidationMessage>
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary input-group-text" @onclick="Buscar"><span class="fa fa-search"></span> Buscar </button>
+                                    <button type="button" class="btn btn-primary input-group-text" @onclick="Buscar"><span class="fa fa-search "></span>  Buscar </button>
                                 </div>
                             </div>
                         </div>
@@ -42,13 +42,13 @@
                 @*Persona*@
                 <div class="form-group">
                     <label for="persona_select">PERSONA:</label>
-                    <InputSelect id="persona_select" @bind-Value="SeleccionarPersona" @onchange="CambiarValor" @onclick="CambiarValor" class="form-control">
-                        <option value="">Elija una Persona</option>
+                    <select id="persona_select" @bind="prestamo.PersonaId" class="form-control">
+                        <option value=""> Elija una Persona </option>
                         @foreach (var item in lista)
                         {
                             <option value="@item.PersonaId">@item.Nombre</option>
                         }
-                    </InputSelect>
+                    </select>
                 </div>
 
                 @*Concepto*@
@@ -158,18 +158,6 @@
         }
     }
 
-    private void CambiarValor()
-    {
-        try
-        {
-            int auxPersonaId = Int32.Parse(SeleccionarPersona);
-            this.prestamo.PersonaId = auxPersonaId;
-        }
-        catch (Exception)
-        {
-
-        }
-    }
 
     private void DecimalBalance()
     {
