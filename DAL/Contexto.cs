@@ -14,7 +14,7 @@ namespace RegistroPersona.DAL
         public DbSet<Prestamo> Prestamos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=DATA\RPersonas.db");
+            optionsBuilder.UseSqlite(@"Data Source=C:\SQLlite\RPersonas.db");
         }
 
     }
