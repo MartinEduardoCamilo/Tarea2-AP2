@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistroPersona", "RegistroPersona.csproj", "{4230D6F6-DC8C-408F-9386-B438563465CB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistroPersonaTests", "..\RegistroPersonaTests\RegistroPersonaTests.csproj", "{324B09FE-F8F4-442A-A550-01463A61C803}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4230D6F6-DC8C-408F-9386-B438563465CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4230D6F6-DC8C-408F-9386-B438563465CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4230D6F6-DC8C-408F-9386-B438563465CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{324B09FE-F8F4-442A-A550-01463A61C803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{324B09FE-F8F4-442A-A550-01463A61C803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{324B09FE-F8F4-442A-A550-01463A61C803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{324B09FE-F8F4-442A-A550-01463A61C803}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

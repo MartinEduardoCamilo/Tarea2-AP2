@@ -60,7 +60,7 @@
                 @*Monto*@
                 <div class="form-group">
                     <label>MONTO:</label>
-                    <InputNumber @bind-Value="prestamo.Monto" @onclick="IgualarMontoBalance" class="form-control" />
+                    <InputNumber step="0.2" @bind-Value="prestamo.Monto" @onclick="DecimalBalance" class="form-control" />
                     <ValidationMessage For="@(() => prestamo.Monto)" />
                 </div>
                 @*Balance*@
@@ -167,14 +167,14 @@
         }
         catch (Exception)
         {
-          
+
         }
     }
 
-    private void IgualarMontoBalance()
+    private void DecimalBalance()
     {
-        decimal auxMonto = prestamo.Monto;
-        prestamo.Balance = auxMonto;
+        decimal Monto = prestamo.Monto;
+        prestamo.Balance = Monto;
     }
 
 }
